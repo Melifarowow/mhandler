@@ -24,3 +24,19 @@ func (fn Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, jsonErrorString, e.Code)
 	}
 }
+
+func ErrorInternal(err error) *Error {
+	return &Error{
+		Error:   err,
+		Message: err.Error(),
+		Code:    http.StatusInternalServerError,
+	}
+}
+
+func ErrorBadRequest(err error) *Error {
+	return &Error{
+		Error:   err,
+		Message: err.Error(),
+		Code:    http.StatusBadRequest,
+	}
+}
