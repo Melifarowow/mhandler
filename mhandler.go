@@ -37,3 +37,11 @@ func ErrorBadRequest(err error) *Error {
 		Code:    http.StatusBadRequest,
 	}
 }
+
+func ErrorNotFound(err error) *Error {
+	return &Error{
+		Error:   err,
+		Message: err.Error(),
+		Code:    http.StatusNotFound,
+	}
+}
