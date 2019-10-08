@@ -45,3 +45,11 @@ func ErrorNotFound(err error) *Error {
 		Code:    http.StatusNotFound,
 	}
 }
+
+func ErrorForbidden(err error) *Error {
+	return &Error{
+		Error:   err,
+		Message: err.Error(),
+		Code:    http.StatusForbidden,
+	}
+}
